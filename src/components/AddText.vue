@@ -1,7 +1,15 @@
 <template>
   <form @submit="onSubmit" class="add-form">
     <div class="form-control">
-      <input type="text" v-model="text" name="text" placeholder="Add Text" />
+      <textarea
+        type="text"
+        v-model="text"
+        name="text"
+        placeholder="Add Text"
+        rows="4"
+        @keydown.enter="onEnter"
+        class="text-input"
+      />
     </div>
 
     <input type="submit" value="Save Text" class="btn btn-block" />
@@ -27,6 +35,12 @@ export default {
       };
       this.$emit("add-text", newText);
       this.text = "";
+    },
+    onEnter(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        this.text += "\n";
+      }
     },
   },
 };
@@ -66,5 +80,24 @@ export default {
 .form-control-check input {
   flex: 2;
   height: 20px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical; /* Allow resizing vertically */
+  min-height: 150px; /* Set a minimum height */
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #007bff; /* Add blue border on focus */
 }
 </style>

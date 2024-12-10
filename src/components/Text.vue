@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     async getAnalysis(type, id) {
-      const result = await fetch(`http://localhost:3001/texts/${id}/${type}`);
+      const result = await fetch(`backend/texts/${id}/${type}`);
       const data = await result.json();
 
       let typeName = type
