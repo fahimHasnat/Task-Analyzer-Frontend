@@ -1,4 +1,4 @@
-# Task Analyzer - Frontend
+# Text Analyzer - Frontend
 
 This guide will walk you through setting up the frontend of the Task Analyzer project.
 
